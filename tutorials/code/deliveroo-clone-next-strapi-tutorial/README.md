@@ -9,3 +9,9 @@ To see it live:
 - Clone the repository.
 - Start the Strapi server: `cd tutorials/deliveroo-clone-next-strapi-tutorial/backend && yarn && strapi dev`.
 - In an other tab, start the nextjs server: `cd tutorials/deliveroo-clone-next-strapi-tutorial/frontend && yarn && yarn dev`.
+
+
+Setup with storybook,bootstrap, tailwindcss and strapi in the backend. 
+
+
+

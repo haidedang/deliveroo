@@ -11,7 +11,6 @@ class CardSection extends React.Component {
       <div>
         <div>
           <label htmlFor="card-element">Credit or debit card</label>
-
           <div>
             <fieldset style={{ border: "none" }}>
               <div className="form-row">

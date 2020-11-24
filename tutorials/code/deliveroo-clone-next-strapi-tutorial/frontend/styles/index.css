@@ -1,8 +1,13 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
 
 html {
-  @apply antialiased
+  @apply antialiased;
 }
 
 @tailwind utilities;
+ */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";

@@ -2,15 +2,7 @@
 import gql from "graphql-tag";
 import Link from "next/link";
 import { graphql } from "react-apollo";
-import {
-  Button,
-  Card,
-  CardBody,
-  CardColumns,
-  CardImg,
-  CardSubtitle
-} from "reactstrap";
-import { CardText, CardTitle, Col, Row } from "reactstrap";
+import RestaurantCard from "../Core/RestaurantCard";
 
 const RestaurantList = (
   { data: { loading, error, restaurants }, search },
@@ -21,44 +13,25 @@ const RestaurantList = (
   //and set equal to variable restaurantSearch
 
   if (restaurants && restaurants.length) {
-    console.log(restaurants)
-        //searchQuery
-    const searchQuery = restaurants.filter(query =>{
-      console.log('inside the function', query.name)
-      console.log('search term ', search)
-      return query.name.includes(search)
-    }
-     
-    );
-    console.log(searchQuery)
+    console.log(restaurants);
+    //searchQuery
+    const searchQuery = restaurants.filter((query) => {
+      console.log("inside the function", query.name);
+      console.log("search term ", search);
+      return query.name.includes(search);
+    });
+    console.log(searchQuery);
     if (searchQuery.length != 0) {
       return (
         <div>
-          <div className="h-100">
-            {searchQuery.map(res => (
-              <Card
-                style={{ width: "30%", margin: "0 10px" }}
-                className="h-100"
-                key={res.id}
-              >
-                <CardImg
-                  top={true}
-                  style={{ height: 250 }}
-                  src={`http://localhost:1337${res.image.url}`}
-                />
-                <CardBody>
-                  <CardTitle>{res.name}</CardTitle>
-                  <CardText>{res.description}</CardText>
-                </CardBody>
-                <div className="card-footer">
-                  <Link
-                    as={`/restaurants/${res.id}`}
-                    href={`/restaurants?id=${res.id}`}
-                  >
-                    <a className="btn btn-primary">View</a>
-                  </Link>
-                </div>
-              </Card>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
+            {searchQuery.map((res) => (
+              <RestaurantCard
+                imageUrl={`http://localhost:1337${res.image.url}`}
+                headerCaption={res.name}
+                description={res.description}
+                id="1"
+              ></RestaurantCard>
             ))}
           </div>
 
@@ -109,6 +82,6 @@ RestaurantList.getInitialProps = async ({ req }) => {
 // available on the `data` prop of the wrapped component (RestaurantList)
 export default graphql(query, {
   props: ({ data }) => ({
-    data
-  })
+    data,
+  }),
 })(RestaurantList);
