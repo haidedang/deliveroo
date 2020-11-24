@@ -18,7 +18,7 @@ class Index extends React.Component {
     super(props);
     //query state will be passed to RestaurantList for the filter query
     this.state = {
-      query: ""
+      query: "B"
     };
   }
   onChange(e) {

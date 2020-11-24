@@ -21,10 +21,16 @@ const RestaurantList = (
   //and set equal to variable restaurantSearch
 
   if (restaurants && restaurants.length) {
-    //searchQuery
-    const searchQuery = restaurants.filter(query =>
-      query.name.toLowerCase().includes(search)
+    console.log(restaurants)
+        //searchQuery
+    const searchQuery = restaurants.filter(query =>{
+      console.log('inside the function', query.name)
+      console.log('search term ', search)
+      return query.name.includes(search)
+    }
+     
     );
+    console.log(searchQuery)
     if (searchQuery.length != 0) {
       return (
         <div>
